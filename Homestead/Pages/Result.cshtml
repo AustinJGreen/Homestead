@@ -1,0 +1,65 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Homestead.Services.UsersDatabase userDb
+@inject Homestead.Services.EmailService eService
+@model Homestead.Pages.ResultModel
+@{
+    Layout = "~/Layout.cshtml";
+}
+
+<style>
+    .main {
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        -moz-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    .success {
+        color: limegreen
+    }
+
+    .error {
+        color: mediumvioletred
+    }
+</style>
+
+<div class="panel panel-default main">
+    <h1 class="display-4">Congratulations.</h1>
+    <blockquote class="blockquote">
+        <p class="mb-0">Here's your estimate.</p>
+    </blockquote>
+    <div class="card bg-light">
+        <div class=" card-body">
+            <h5 class="card-title">Monthly Rent Estimate</h5>
+            <p class="card-text">
+                $@Model.EstimateLow - $@Model.EstimateHigh
+            </p>
+            <h5 class="card-title">
+                Expected Rent
+            </h5>
+            <form method="post">
+                <div class="form-group">
+                    <label class="card-text">Enter your expected rent and we'll email you more information.</label>
+                    <input asp-for="ExpectedRent" type="text" class="form-control">
+                    @if (Model.RentError != null)
+                    {
+                        <small class="form-text error">@Model.RentError</small>
+                    }
+                </div>
+
+                @if (Model.SentEmail)
+                {
+                    <button type="submit" class="btn btn-dark" disabled>Email Me!</button>
+                    <small class="form-text harmonize">We've sent you an email with more info.</small>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-dark">Email Me!</button>
+                }
+            </form>
+        </div>
+    </div>
+</div>

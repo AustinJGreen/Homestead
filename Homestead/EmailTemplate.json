@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" media="all" href="/assets/application-mailer-dbc5154d3c4160e8fa7ef52fa740fa402760c39b5d22c8f6d64ad5999499d263.css" />
+</head>
+
+<body class="bg-light">
+    <preview>Thank you for using Harmonize.</preview>
+    <div class="container">
+        <img class="mx-auto mt-4 mb-3" width="48" height="48" src="http://harmonize.azurewebsites.net/Content/harmonize.svg" />
+        <div class="card mb-4" style="border-top: 5px solid #7FCDD4;">
+            <div class="card-body">
+                <h4 class="text-center">Thank you for using Harmonize.</h4>
+                <h5 class="text-muted text-center">Here are some additional details for you, {0}</h5>
+                <hr />
+
+                <h5 class="text-center"><strong>Estimate Details</strong></h5>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 0;">Total Property Estimate</td>
+                            <td style="border-top: 0;" class="text-right"><strong>{1}</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 0;">Montly Rent Estimate</td>
+                            <td style="border-top: 0;" class="text-right"><strong>{2}-{3}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p class="text-center"><u>Account registered from {4}. This message was sent from an unattended mailbox.</u></p>
+    </div>
+</body>
+</html>

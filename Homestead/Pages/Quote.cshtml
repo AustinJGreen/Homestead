@@ -1,0 +1,56 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Homestead.Services.UsersDatabase userDb
+@inject Homestead.Services.AttomData aData
+@model Homestead.Pages.QuoteModel
+@{
+    Layout = "~/Layout.cshtml";
+}
+
+<style>
+    #main {
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        -moz-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
+    }
+    .error {
+        color: mediumvioletred
+    }
+</style>
+
+<div id="main">
+    <h1 class="display-4">Enter an Address.</h1>
+    <blockquote class="blockquote">
+        <p class="mb-0">We'll get you an estimate.</p>
+    </blockquote>
+    <div class="card bg-light">
+        <div class=" card-body">
+            <form method="post" asp-antiforgery="false">
+                <div class="form-group">
+                    <label>Home Address</label>
+                    <input asp-for="HomeAddress" placeholder="12345 Normal St" class="form-control" />
+                    @if (Model.AddressError != null)
+                    {
+                        <small class="form-text error">@Model.AddressError</small>
+                    }
+                </div>
+                <div class="form-group">
+                    <label>City and State</label>
+                    <input asp-for="CityState" placeholder="City, ST" class="form-control" />
+                    @if (Model.CityStateError != null)
+                    {
+                        <small class="form-text error" style="color:red">@Model.CityStateError</small>
+                    }
+                </div>
+                <button type="submit" class="btn btn-dark">Get Rent Estimate</button>
+                @if (Model.ResultError != null)
+                {
+                    <small class="form-text error">@Model.ResultError</small>
+                }
+            </form>
+        </div>
+    </div>
+</div>

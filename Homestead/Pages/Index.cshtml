@@ -1,0 +1,60 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Homestead.Services.UsersDatabase usersDb
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@model Homestead.Pages.IndexModel
+@{
+    Layout = "~/Layout.cshtml";
+}
+
+<style>
+    #main {
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        -moz-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
+    }
+    .error {
+        color: mediumvioletred
+    }
+</style>
+
+<div id="main">
+    <h1 class="display-1">Welcome.</h1>
+    <blockquote class="blockquote">
+        <p class="mb-0">Enter your details to get started.</p>
+    </blockquote>
+    <div class="card bg-light">
+        <div class=" card-body">
+            <form method="post">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input asp-for="Email" placeholder="Email" class="form-control" />
+                    @if (Model.EmailError != null)
+                    {
+                        <small class="form-text error">@Model.EmailError</small>
+                    }
+                </div>
+                <div class="form-group">
+                    <label>First and Last Name</label>
+                    <input asp-for="Name" placeholder="Name" class="form-control" />
+                    @if (Model.NameError != null)
+                    {
+                        <small class="form-text error">@Model.NameError</small>
+                    }
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input asp-for="Phone" placeholder="Phone" class="form-control" />
+                    @if (Model.PhoneError != null)
+                    {
+                        <small class="form-text error">@Model.PhoneError</small>
+                    }
+                </div>
+                <button type="submit" class="btn btn-dark">Continue</button>
+            </form>
+        </div>
+    </div>
+</div>
